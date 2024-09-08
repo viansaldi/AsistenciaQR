@@ -25,9 +25,11 @@ export class RecuperaContrasenaPage implements OnInit {
   recovery(): void {
     if(this.user.trim() == ''){
       this.msgError = 'El usuario es obligatorio';
+      this.setOpen(true);
       return;
     }
     this.msgError = 'Actualmente esta función no esta disponible.';
+    this.setOpen(true);
   }
 
 }

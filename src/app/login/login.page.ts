@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -29,12 +29,12 @@ export class LoginPage implements OnInit {
       this.msgError = 'El usuario y la contraseña son de carácter obligatorio'
       return;  
     }
-    if(this.user != 'admin' && this.password != '1234'){
+    if(this.user == 'admin' && this.password == '1234'){
+      this.navigateToHome();
+    } else {
       this.setOpen(true);
       this.msgError = 'Usuario y/o contraseña invalidos'
       return;
-    } else {
-      this.navigateToHome();
     }
   }
 
@@ -43,7 +43,12 @@ export class LoginPage implements OnInit {
   }
 
   private navigateToHome(): void {
-
+    let navigationExtras: NavigationExtras = {
+      state: {
+        user: this.user 
+      }
+    };
+    this.router.navigate(['home'], navigationExtras);
   }
   
   setOpen(isOpen: boolean) {
