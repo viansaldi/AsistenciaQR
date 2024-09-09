@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      AsistenciaQR
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,10 +15,17 @@
   
 
   <div id="container">
-    <ion-item>
-      <ion-label>
-        Bienvenido {{ user }}
-      </ion-label>
-    </ion-item>
+    <ion-card  (click)="play()" #card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>
+            Bienvenido {{ user }}
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-label>
+      0 Usuarios han marcado sus asistencia el día de hoy
+    </ion-label>
   </div>
 </ion-content>
