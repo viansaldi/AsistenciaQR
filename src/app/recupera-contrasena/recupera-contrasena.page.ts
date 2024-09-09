@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recupera-contrasena',
@@ -12,10 +13,11 @@ export class RecuperaContrasenaPage implements OnInit {
   public isAlertOpen: boolean;
   public alertButtons = ['Aceptar'];
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
     this.user = '';
+    this.isAlertOpen = false;
   }
 
   setOpen(isOpen: boolean) {
@@ -30,6 +32,10 @@ export class RecuperaContrasenaPage implements OnInit {
     }
     this.msgError = 'Actualmente esta función no esta disponible.';
     this.setOpen(true);
+  }
+  
+  navigateToLogin(): void {
+    this.router.navigate(['login']);
   }
 
 }
