@@ -5,11 +5,19 @@
     "mode": "full",
     "tables": [
         {
-            "name": "languages",
+            "name": "students",
             "schema": [
                 {
-                    "column": "name",
-                    "value": "TEXT NOT NULL PRIMARY KEY"
+                    "column": "full_name",
+                    "value": "TEXT NOT NULL PRIMARY KEY "
+                },
+                {
+                    "column": "address",
+                    "value": "TEXT NOT NULL PRIMARY KEY "
+                },
+                {
+                    "column": "email",
+                    "value": "TEXT NOT NULL PRIMARY KEY "
                 }
             ]
         }
