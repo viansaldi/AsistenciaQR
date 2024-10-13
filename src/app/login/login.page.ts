@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { ApiClientServiceService } from '../api-services/api-client-service.service';
+import { ApiClientService } from '../api-services/api-client.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginPage implements OnInit {
   public isAlertOpen: boolean;
   public alertButtons = ['Aceptar'];
 
-  constructor(private router: Router, private api: ApiClientServiceService) { }
+  constructor(private router: Router, private api: ApiClientService) { }
 
   ngOnInit() {
     this.user = '';

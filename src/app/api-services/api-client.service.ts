@@ -6,7 +6,7 @@ import { User } from '../model/user';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiClientServiceService {
+export class ApiClientService {
 
   httpOptions = {
     headers: new HttpHeaders({

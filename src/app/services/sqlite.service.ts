@@ -45,7 +45,7 @@ export class SqliteService {
     if(!dbSetup.value){
       this.downloadDatabase();
     } else {
-      this.dbName = await this.getDbName();
+      this.dbName = await  this.getDbName();
       this.dbName = (await Preferences.get({ key: 'dbname'})).value
       await CapacitorSQLite.createConnection({database: this.dbName});
       await CapacitorSQLite.open({ database: this.dbName});
