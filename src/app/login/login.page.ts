@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ApiClientService } from '../api-services/api-client.service';
+import { SqliteService } from '../services/sqlite.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginPage implements OnInit {
   public isAlertOpen: boolean;
   public alertButtons = ['Aceptar'];
 
-  constructor(private router: Router, private api: ApiClientService) { }
+  constructor(private router: Router, private api: ApiClientService, private sqlite: SqliteService) { }
 
   ngOnInit() {
     this.user = '';
@@ -25,6 +26,13 @@ export class LoginPage implements OnInit {
     let users = [];
     this.api.getUsers().subscribe((data)=>{
       users = data;
+    });
+
+    this.sqlite.create('1-7','a','b','c').then((changes) => {
+      console.log(changes);
+      console.log("Created");
+    }).catch( e => {
+      console.log(e);
     });
   }
 

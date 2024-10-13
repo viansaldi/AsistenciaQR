@@ -8,16 +8,20 @@
             "name": "students",
             "schema": [
                 {
+                    "column": "rut",
+                    "value": "TEXT NOT NULL PRIMARY KEY"
+                },
+                {
                     "column": "full_name",
-                    "value": "TEXT NOT NULL PRIMARY KEY "
+                    "value": "TEXT NOT NULL"
                 },
                 {
                     "column": "address",
-                    "value": "TEXT NOT NULL PRIMARY KEY "
+                    "value": "TEXT NOT NULL"
                 },
                 {
                     "column": "email",
-                    "value": "TEXT NOT NULL PRIMARY KEY "
+                    "value": "TEXT NOT NULL"
                 }
             ]
         }

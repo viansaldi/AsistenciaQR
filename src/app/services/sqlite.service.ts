@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CapacitorSQLite, JsonSQLite } from '@capacitor-community/sqlite';
+import { CapacitorSQLite, capSQLiteChanges, capSQLiteValues, JsonSQLite } from '@capacitor-community/sqlite';
 import { Device } from '@capacitor/device';
 import { Preferences } from '@capacitor/preferences';
 import { BehaviorSubject } from 'rxjs';
@@ -93,6 +93,53 @@ export class SqliteService {
       }
     }
     return this.dbName;
+  }
+
+  async create(rut: string, fullName: string, address: string, email: string){
+    let sql = 'INSERT INTO students VALUES (?, ?, ?, ?)';
+    const dbName = await this.getDbName();
+    return CapacitorSQLite.executeSet({
+      database: dbName,
+      set: [
+        {
+          statement: sql,
+          values:[
+            rut,
+            fullName,
+            address,
+            email
+          ]
+        }
+      ]
+    }).then( (changes: capSQLiteChanges) => {
+      if(this.isWeb){
+        CapacitorSQLite.saveToStore({ database: dbName });
+      }
+      return changes;
+    }).catch(e => Promise.reject(e));
+  }
+
+  async read(){
+    let sql = 'SELECT * FROM students';
+    const dbName = await this.getDbName();
+    return CapacitorSQLite.query({
+      database: dbName,
+      statement: sql,
+      values:[]
+    }).then( (response: capSQLiteValues) => {
+      let students: any[] = [];
+
+      if(this.isIOS && response.values.length > 0){
+        response.values.shift();
+      }
+
+      for (let index = 0; index < response.values.length; index++) {
+        const student = response.values[index];
+        students.push(student); 
+      }
+
+      return response;
+    }).catch(e => Promise.reject(e));
   }
 
 }
