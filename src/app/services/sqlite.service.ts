@@ -30,7 +30,7 @@ export class SqliteService {
       try{
         await sqlite.requestPermissions();
       }catch(error){
-        console.log("Esta app necesita permisos")
+        console.log("Esta app necesita permisos");
       }
     } else if(info.platform == 'web'){
       this.isWeb =  true;
@@ -38,6 +38,7 @@ export class SqliteService {
     } else if(info.platform == 'ios'){
       this.isIOS = true;
     }
+    this.setupDatabase();
   }
 
   async setupDatabase(){
@@ -46,7 +47,6 @@ export class SqliteService {
       this.downloadDatabase();
     } else {
       this.dbName = await  this.getDbName();
-      this.dbName = (await Preferences.get({ key: 'dbname'})).value
       await CapacitorSQLite.createConnection({database: this.dbName});
       await CapacitorSQLite.open({ database: this.dbName});
       
@@ -87,9 +87,9 @@ export class SqliteService {
 
   async getDbName(){
     if(!this.dbName) {
-      const dbname = await Preferences.get({key: 'dbname'})
+      const dbname = await Preferences.get({key: 'dbname'});
       if(dbname.value){
-        this.dbName = dbname.value
+        this.dbName = dbname.value;
       }
     }
     return this.dbName;

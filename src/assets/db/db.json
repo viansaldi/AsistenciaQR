@@ -1,5 +1,5 @@
 {
-    "database": "languages.db",
+    "database": "asistencia.db",
     "version": 1,
     "encrypted": false,
     "mode": "full",

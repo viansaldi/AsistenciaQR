@@ -27,16 +27,16 @@ export class LoginPage implements OnInit {
     this.api.getUsers().subscribe((data)=>{
       users = data;
     });
+  }
 
+  logIn(): void{
+    
     this.sqlite.create('1-7','a','b','c').then((changes) => {
       console.log(changes);
       console.log("Created");
     }).catch( e => {
       console.log(e);
     });
-  }
-
-  logIn(): void{
     if(this.user.trim() == '' || this.password.trim() == ''){
       this.setOpen(true);
       this.msgError = 'El usuario y la contraseña son de carácter obligatorio'
