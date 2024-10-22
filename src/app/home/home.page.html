@@ -12,10 +12,10 @@
       <ion-title size="large">AsistenciaQR</ion-title>
     </ion-toolbar>
   </ion-header>
-  
 
-  <div id="container">
-    <ion-card  (click)="play()" #card>
+
+  
+    <ion-card (click)="play()" #card>
       <ion-card-content>
         <ion-item>
           <ion-label>
@@ -24,8 +24,14 @@
         </ion-item>
       </ion-card-content>
     </ion-card>
+    <div id="container">
     <ion-label>
-      0 Usuarios han marcado sus asistencia el día de hoy
+      {{ users.length }} Usuarios han marcado sus asistencia el día de hoy
     </ion-label>
-  </div>
+    <br/>
+    <ion-label *ngFor="let u of users">
+      {{ u.username }}
+      <br/>
+    </ion-label>
+    </div>
 </ion-content>

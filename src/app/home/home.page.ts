@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
+import { ApiClientService } from '../api-services/api-client.service';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +14,11 @@ export class HomePage {
   @ViewChild(IonCard, { read: ElementRef }) card: ElementRef<HTMLIonCardElement>;
 
   private animation: Animation;
+  public users = [];
 
   user: string;
 
-  constructor(private animationCtrl: AnimationController, private activeroute: ActivatedRoute, private router:Router) {
+  constructor(private animationCtrl: AnimationController, private activeroute: ActivatedRoute, private router:Router, private api: ApiClientService) {
     this.activeroute.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation()!.extras.state){
         this.user = this.router.getCurrentNavigation()!.extras.state!['user'];
@@ -25,6 +27,10 @@ export class HomePage {
   }
   
   ngAfterViewInit() {
+    this.api.getUsers().subscribe((data)=>{
+      this.users = data;
+    });
+    
     this.animation = this.animationCtrl
       .create()
       .addElement(this.card.nativeElement)
