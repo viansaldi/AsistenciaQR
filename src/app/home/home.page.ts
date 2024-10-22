@@ -20,12 +20,7 @@ export class HomePage {
   user = {user: '', password: ''};
 
   constructor(private animationCtrl: AnimationController, private activeroute: ActivatedRoute, private router:Router, private api: ApiClientService, private storage: Storage) {
-    this.activeroute.queryParams.subscribe(params => {
-      if(this.router.getCurrentNavigation()!.extras.state){
-        this.user = this.router.getCurrentNavigation()!.extras.state!['user'];
-      }
-    });
-    storage.get('user').then((user) => { console.log('El usuario es ', user.user); });
+    storage.get('user').then((user) => { this.user = user });
   }
   
   ngAfterViewInit() {
