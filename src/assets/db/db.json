@@ -1,26 +1,18 @@
 {
-    "database": "asistencia.db",
+    "database": "historial.db",
     "version": 1,
     "encrypted": false,
     "mode": "full",
     "tables": [
         {
-            "name": "students",
+            "name": "historial_log",
             "schema": [
                 {
-                    "column": "rut",
-                    "value": "TEXT NOT NULL PRIMARY KEY"
-                },
-                {
-                    "column": "full_name",
+                    "column": "user_name",
                     "value": "TEXT NOT NULL"
                 },
                 {
-                    "column": "address",
-                    "value": "TEXT NOT NULL"
-                },
-                {
-                    "column": "email",
+                    "column": "date_attempt",
                     "value": "TEXT NOT NULL"
                 }
             ]

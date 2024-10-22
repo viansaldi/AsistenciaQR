@@ -10,12 +10,14 @@ export class AuthenticationService {
 
   constructor() { }
 
-  logIn(user: string, password: string) {
+  logIn(user: string, password: string): boolean {
     if (user == 'admin' && password == '1234') {
       this.login = true;
       this.userName = user;
+      return true;
     } else {
       this.login = false;
+      return false;
     }
   }
 

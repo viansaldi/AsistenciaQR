@@ -95,8 +95,8 @@ export class SqliteService {
     return this.dbName;
   }
 
-  async create(rut: string, fullName: string, address: string, email: string){
-    let sql = 'INSERT INTO students VALUES (?, ?, ?, ?)';
+  async create(user: string, date: string){
+    let sql = 'INSERT INTO historial_log VALUES (?, ?)';
     const dbName = await this.getDbName();
     return CapacitorSQLite.executeSet({
       database: dbName,
@@ -104,10 +104,8 @@ export class SqliteService {
         {
           statement: sql,
           values:[
-            rut,
-            fullName,
-            address,
-            email
+            user,
+            date
           ]
         }
       ]
@@ -120,7 +118,7 @@ export class SqliteService {
   }
 
   async read(){
-    let sql = 'SELECT * FROM students';
+    let sql = 'SELECT * FROM historial_log';
     const dbName = await this.getDbName();
     return CapacitorSQLite.query({
       database: dbName,

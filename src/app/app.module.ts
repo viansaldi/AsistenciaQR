@@ -14,12 +14,13 @@ import {MatButtonModule} from '@angular/material/button';
 
 import { defineCustomElements as jeepSqlite } from 'jeep-sqlite/loader';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 jeepSqlite(window)
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    HttpClientModule, MatButtonModule, MatDividerModule, MatIconModule],
+    HttpClientModule, MatButtonModule, MatDividerModule, MatIconModule, IonicStorageModule.forRoot()],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync()],
   bootstrap: [AppComponent],
   schemas: [

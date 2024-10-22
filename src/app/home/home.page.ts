@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
 import { ApiClientService } from '../api-services/api-client.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -16,14 +17,15 @@ export class HomePage {
   private animation: Animation;
   public users = [];
 
-  user: string;
+  user = {user: '', password: ''};
 
-  constructor(private animationCtrl: AnimationController, private activeroute: ActivatedRoute, private router:Router, private api: ApiClientService) {
+  constructor(private animationCtrl: AnimationController, private activeroute: ActivatedRoute, private router:Router, private api: ApiClientService, private storage: Storage) {
     this.activeroute.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation()!.extras.state){
         this.user = this.router.getCurrentNavigation()!.extras.state!['user'];
       }
     });
+    storage.get('user').then((user) => { console.log('El usuario es ', user.user); });
   }
   
   ngAfterViewInit() {
