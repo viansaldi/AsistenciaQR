@@ -6,6 +6,7 @@ export const authGuard: CanActivateChildFn = (childRoute, state) => {
   
   const authenticationService = inject(AuthenticationService);
   const router = inject(Router);
+  
   if(authenticationService.isLogged()){
     return true;
   }

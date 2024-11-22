@@ -14,13 +14,13 @@ export class HomePage {
 
   @ViewChild(IonCard, { read: ElementRef }) card: ElementRef<HTMLIonCardElement>;
 
-  private animation: Animation;
-  public users = [];
+  animation: Animation;
+  users = [];
 
   user = {user: '', password: ''};
 
   constructor(private animationCtrl: AnimationController, private activeroute: ActivatedRoute, private router:Router, private api: ApiClientService, private storage: Storage) {
-    storage.get('user').then((user) => { this.user = user });
+    
   }
   
   ngAfterViewInit() {

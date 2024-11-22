@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Device } from '@capacitor/device';
 import { SqliteService } from './services/sqlite.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent {
   public load: boolean;
 
   constructor(private platform: Platform,
-    private sqlite: SqliteService
+    private sqlite: SqliteService, private storage: Storage
   ) {
     this.isWeb = false;
     this.load = false;
@@ -30,5 +31,11 @@ export class AppComponent {
         this.load = load;
       });
     });
+  }   
+  
+  async ngOnInit() {
+    // If using a custom driver:
+    // await this.storage.defineDriver(MyCustomDriver)
+    await this.storage.create();
   }
 }

@@ -2,6 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+import { provideHttpClient } from '@angular/common/http';
+import { Storage } from '@ionic/storage-angular';
 
 describe('AppComponent', () => {
 
@@ -9,6 +11,7 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [provideHttpClient(), Storage]
     }).compileComponents();
   });
 
