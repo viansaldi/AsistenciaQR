@@ -21,4 +21,22 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  it('should find out if isWeb is false', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.isWeb).toBeFalse();
+  });
+
+  it('should find out if isWeb is false', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.ngOnInit()).toBeTruthy();
+  });
+
+  it('should find out if load is false', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.load).toBeFalse();
+  });
+
 });

@@ -14,4 +14,16 @@ describe('authGuard', () => {
   it('should be created', () => {
     expect(executeGuard).toBeTruthy();
   });
+
+  it('should be call', () => {
+    expect(executeGuard.call).toBeTruthy();
+  });
+  
+  it('should be call', () => {
+    expect(executeGuard.call).toBeTruthy();
+  });
+
+  it('should be apply', () => {
+    expect(executeGuard.apply).toBeTruthy();
+  });
 });

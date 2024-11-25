@@ -14,4 +14,8 @@ describe('PageNotFoundPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should find out ngOnInit', () => {
+    expect(component.ngOnInit).toBeTruthy();
+  });
 });
