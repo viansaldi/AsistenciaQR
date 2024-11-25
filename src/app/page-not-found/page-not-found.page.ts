@@ -12,4 +12,8 @@ export class PageNotFoundPage implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterContentChecked(){}
+
+  ngAfterViewInit(){}
+
 }

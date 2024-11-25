@@ -18,4 +18,12 @@ describe('PageNotFoundPage', () => {
   it('should find out ngOnInit', () => {
     expect(component.ngOnInit).toBeTruthy();
   });
+
+  it('should find out ngAfterContentChecked', () => {
+    expect(component.ngAfterContentChecked).toBeTruthy();
+  });
+  
+  it('should find out ngAfterViewInit', () => {
+    expect(component.ngAfterViewInit).toBeTruthy();
+  });
 });
